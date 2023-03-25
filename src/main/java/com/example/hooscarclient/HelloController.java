@@ -1,14 +1,19 @@
 package com.example.hooscarclient;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
+    private Label loginLabel;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void loginClick() {
+        loginLabel.setText("Yayy you logged in hah");
+    }
+
+    public void signupClick() {
+
     }
 }
