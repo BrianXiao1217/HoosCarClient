@@ -5,8 +5,8 @@ import java.util.*;
 public class Pool {
 
     private String ID;
-    private List<Profile>() members;
-    private List<Profile>() pendingMembers;
+    private List<Profile> members;
+    private List<Profile> pendingMembers;
     private Profile host;
 
     public Pool (String id, Profile host) {
