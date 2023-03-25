@@ -9,16 +9,21 @@ public class Pool {
     private List<Profile> pendingMembers;
     private Profile host;
 
-    public Pool (String id, Profile host) {
+    private String displayName;
+
+    public Pool (String id, Profile host, String displayName) {
         ID = id;
+        this.host = host;
+        this.displayName = displayName;
         members = new ArrayList<Profile>();
         pendingMembers = new ArrayList<Profile>();
-        this.host = host;
     }
 
     public String getID() {
         return this.ID;
     }
+
+    public String getDisplayName() { return this.displayName; }
 
     public List<Profile>  getMembers() {
         return this.members;
