@@ -12,8 +12,9 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 750);
+            //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage-view.fxml"));
+            Parent root = FXMLLoader.load(HelloApplication.class.getResource("profile-view.fxml"));
+            Scene scene = new Scene(root, 450, 650);
             stage.setTitle("Hoos Car is this pool");
             String css = this.getClass().getResource("homepage.css").toExternalForm();
             scene.getStylesheets().add(css);
@@ -24,19 +25,6 @@ public class HelloApplication extends Application {
         }
     }
 
-    public void switchScene(String fxmlFile) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
-        Parent root;
-        try {
-            if(fxmlFile.equals("signup-view.fxml")) {
-                SignUpController controller = (SignUpController) fxmlLoader.getController();
-                //piss
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
     public static void main(String[] args) {
         launch();
     }
