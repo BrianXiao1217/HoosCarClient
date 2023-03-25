@@ -18,13 +18,13 @@ public class Profile {
     public Profile(){
         this("","","");
     }
-    private void setDisplayname(String display){
+    public void setDisplayname(String display){
         displayname = display;
     }
-    private String getDisplayname(String display){
+    public String getDisplayname(String display){
         return displayname;
     }
-    private void setPhoneNumber(String phone){
+    public void setPhoneNumber(String phone){
         phoneNumber = phone;
     }
     public void addPool(String id){
@@ -45,19 +45,19 @@ public class Profile {
     public List<String> getHostedPools(){
         return hostedPools;
     }
-    private String getPhoneNumber(){
+    public String getPhoneNumber(){
         return phoneNumber;
     }
-    private void setUsername(String user){
+    public void setUsername(String user){
         username = user;
     }
-    private String getUsername(){
+    public String getUsername(){
         return username;
     }
-    private void setPassword(String pass){
+    public void setPassword(String pass){
         password = pass;
     }
-    private String getPassword(){
+    public String getPassword(){
         return password;
     }
 
