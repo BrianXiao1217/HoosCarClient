@@ -4,6 +4,7 @@ import java.util.*;
 public class Profile {
     private String phoneNumber;
     private String username;
+    private String displayname;
     private String password;
     private List<String> carPools;
     private List<String> hostedPools;
@@ -16,6 +17,12 @@ public class Profile {
     }
     public Profile(){
         this("","","");
+    }
+    private void setDisplayname(String display){
+        displayname = display;
+    }
+    private String getDisplayname(String display){
+        return displayname;
     }
     private void setPhoneNumber(String phone){
         phoneNumber = phone;
