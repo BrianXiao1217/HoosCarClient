@@ -2,6 +2,7 @@ package com.example.hooscarclient;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -23,6 +24,19 @@ public class HelloApplication extends Application {
         }
     }
 
+    public void switchScene(String fxmlFile) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
+        Parent root;
+        try {
+            if(fxmlFile.equals("signup-view.fxml")) {
+                SignUpController controller = (SignUpController) fxmlLoader.getController();
+                //piss
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     public static void main(String[] args) {
         launch();
     }

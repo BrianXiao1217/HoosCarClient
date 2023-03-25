@@ -10,10 +10,12 @@ public class HelloController {
 
     @FXML
     protected void loginClick() {
-        loginLabel.setText("Yayy you logged in hah");
+
+        //loginLabel.setText("Yayy you logged in hah");
+        //switch to profile scene
     }
 
     public void signupClick() {
-
+        //switch to signup scene
     }
 }

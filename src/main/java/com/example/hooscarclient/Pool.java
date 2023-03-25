@@ -47,10 +47,7 @@ public class Pool {
     public boolean removeMember(Profile p){
         return members.remove(p);
     }
-    public boolean removePendingMember(Profile p)
-    {
-        return pendingMembers(p);
-    }
+    public boolean removePendingMember(Profile p) { return pendingMembers.remove(p); }
     public void addPendingMember(Profile p) {
         pendingMembers.add(p);
     }
