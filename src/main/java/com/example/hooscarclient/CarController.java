@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -35,6 +36,8 @@ public class CarController
     private ComboBox<String> comboBox;
     @FXML
     private ObservableList<String> pools;
+    @FXML
+    private Button[] buttons = new Button[6];
 
 
     public void switchToProfile(ActionEvent event) throws IOException
@@ -116,7 +119,33 @@ public class CarController
     public void createPool()
     {
 
-
     }
+
+    public void initializeButtons() {
+        // request date, time + destination from
+        ArrayList<String> buttonText = new ArrayList<>();
+        int i = 0;
+        for (String s: buttonText) {
+            buttons[i].setText(s);
+            i++;
+        }
+    }
+
+    public void switchToRide(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("ride-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToRequest(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("request-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
 

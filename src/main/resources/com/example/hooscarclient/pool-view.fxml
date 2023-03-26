@@ -34,26 +34,17 @@
     <Label fx:id="poolLabel" />
    <ButtonBar prefHeight="40.0" prefWidth="200.0">
      <buttons>
-       <Button mnemonicParsing="false" text="Button" />
-         <Button mnemonicParsing="false" text="Button" />
-         <Button mnemonicParsing="false" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
      </buttons>
    </ButtonBar>
    <ButtonBar prefHeight="45.0" prefWidth="266.0">
      <buttons>
-       <Button mnemonicParsing="false" text="Button" />
-         <Button mnemonicParsing="false" text="Button" />
-         <Button mnemonicParsing="false" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
+         <Button onAction="#switchToRide" text="Button" />
      </buttons>
    </ButtonBar>
-</VBox>
-
-<VBox>
-    <Button onAction="#switchToRide" text="" />
-    <Button onAction="#switchToRide" text="" />
-    <Button onAction="#switchToRide" text="" />
-    <Button onAction="#switchToRide" text="" />
-    <Button onAction="#switchToRide" text="" />
-    <Button onAction="#switchToRide" text="" />
-
+   <Button onAction="#switchToRequest" text="Request/Offer a Ride" />
 </VBox>
