@@ -1,5 +1,6 @@
 package com.example.hooscarclient;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,13 +15,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.ResourceBundle;
 
-public class CarController {
+
+public class CarController
+{
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -32,7 +36,9 @@ public class CarController {
     @FXML
     private ObservableList<String> pools;
 
-    public void switchToProfile(ActionEvent event) throws IOException {
+
+    public void switchToProfile(ActionEvent event) throws IOException
+    {
         root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -40,22 +46,27 @@ public class CarController {
         stage.show();
     }
     @FXML
-    protected void loginClick() {
+    protected void loginClick()
+    {
         //switchToProfile();
         //loginLabel.setText("Yayy you logged in hah");
         //switch to profile scene
     }
 
-    public void signupClick() {
+
+    public void signupClick()
+    {
         //switch to signup scene
     }
+
 
     /*ObservableList<String> list = FXCollections.observableArrayList(
             "Item 1", "Item 2", "Item 3", "Item 4");
     ListView<String> lv = new ListView<>(list);
         lv.setCellFactory(param -> new XCell()); */
     @FXML
-    protected void switchToPool(ActionEvent event) throws IOException {
+    protected void switchToPool(ActionEvent event) throws IOException
+    {
         // when a pool is clicked, move to a different scene
         // retrieve from server
         root = FXMLLoader.load(getClass().getResource("pool-view.fxml"));
@@ -65,49 +76,47 @@ public class CarController {
         stage.show();
     }
 
-    public void initializePoolList() {
+
+    public void initializePoolList()
+    {
         pools = FXCollections.observableArrayList(); // currently empty
 
-        for (int i = 0; i < 5; i++) {
+
+        for (int i = 0; i < 5; i++)
+        {
             pools.add("No Pool");
         }
         //retrieve pools for the mmember
-            //"getAllPools username"
+        //"getAllPools username"
         //parse through
-            //pools.set(i, parsed value)
+        //pools.set(i, parsed value)
 
-        /*comboBox = new ComboBox<>();
-        for(int i=0; i < 10; i++) {
-            pools.add(""+i);
+
+       /*comboBox = new ComboBox<>();
+       for(int i=0; i < 10; i++) {
+           pools.add(""+i);
 //            comboBox.getItems().add(""+i);
-        }
-        comboBox.setItems(pools);
-        System.out.println(comboBox.toString()); */
+       }
+       comboBox.setItems(pools);
+       System.out.println(comboBox.toString()); */
         //fill pools using getAllPools
     }
-    public void joinPool() {
+    public void joinPool()
+    {
         //enter ID
         //check if ID is valid (call to backend)
-            //"selectPool poolID"
+        //"selectPool poolID"
         // if valid add pool
+
 
         //comboBox.getItems().add("yum pices"); //add the id
     }
 
-    public void createPool() {
 
-    }
+    public void createPool()
+    {
 
-    public void switchToRide(ActionEvent event) throws IOException {
-        //send button name to backend with request for info
-            //receive info, turn into ArrayList
-        root = FXMLLoader.load(getClass().getResource("ride-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void updateDriverBlock() {
 
     }
 }
+
