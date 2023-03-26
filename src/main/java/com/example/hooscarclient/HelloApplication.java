@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
             //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage-view.fxml"));
             Parent root = FXMLLoader.load(HelloApplication.class.getResource("homepage-view.fxml"));
             Scene scene = new Scene(root, 450, 650);
-            stage.setTitle("Hoos Car is this pool");
+            stage.setTitle("Hoos Car");
             String css = this.getClass().getResource("homepage.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);

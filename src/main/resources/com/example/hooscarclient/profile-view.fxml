@@ -23,22 +23,7 @@
    </FlowPane>
    <FlowPane prefHeight="29.0" prefWidth="200.0">
       <children>
-      
-      
-      <!--   <FlowPane prefHeight="13.0" prefWidth="200.0">-->
-      <!--      <children>-->
-      <!--         <ComboBox fx:id="fruitCombo" layoutX="15.0" layoutY="33.0" prefWidth="90.0" promptText="choose">-->
-      <!--            -->
-      <!--         </ComboBox>-->
-      <!--      </children>-->
-      <!--   </FlowPane>-->
-      <!--   <ComboBox fx:id="comboBox" onAction="#initializePoolList">-->
-      <!--      <items>-->
-      <!--         <FXCollections fx:factory="observableArrayList" >-->
-      <!--            <String fx:value=""/>-->
-      <!--         </FXCollections>-->
-      <!--      </items>-->
-      <!--   </ComboBox>-->
+
          <Button onAction="#switchToPool" text="View or Join Pool" />
          <TextField prefHeight="25.0" prefWidth="125.0" promptText="enter ID" />
       </children>

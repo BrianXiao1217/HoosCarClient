@@ -1,20 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.hooscarclient.CarController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="loginLabel" />
-    <TextField promptText="Username" />
-    <PasswordField promptText="Password" />
-    <Button onAction="#switchToProfile" text="Log In" />
-    <Button onAction="#signupClick" text="Sign Up" />
+<VBox alignment="CENTER" prefHeight="472.0" prefWidth="268.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hooscarclient.CarController">
+    <padding>
+        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+    </padding>
+   <Label text="Pool Name">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <FlowPane columnHalignment="CENTER" prefHeight="27.0" prefWidth="228.0">
+      <children>
+         <Label text="Host Name" textAlignment="CENTER" />
+         <Separator orientation="VERTICAL" prefHeight="7.0" prefWidth="10.0" />
+         <Label text="Group Member Names" textAlignment="CENTER" />
+      </children>
+   </FlowPane>
+   <Label text="Driving Schedule">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+
+    <Label fx:id="poolLabel" />
+   <ButtonBar prefHeight="40.0" prefWidth="200.0">
+     <buttons>
+       <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+     </buttons>
+   </ButtonBar>
+   <ButtonBar prefHeight="45.0" prefWidth="266.0">
+     <buttons>
+       <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+     </buttons>
+   </ButtonBar>
 </VBox>

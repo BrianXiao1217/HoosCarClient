@@ -97,4 +97,15 @@ public class CarController {
     public void createPool() {
 
     }
+
+    public void switchToRides(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("ride-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void updateDriverBlock() {
+
+    }
 }
