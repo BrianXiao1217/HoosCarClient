@@ -97,7 +97,7 @@ public class CarController
             out.writeUTF(user+" "+password);
             //get the result after the server processes
             result = in.readLine();
-            System.out.println(user+" "+password);
+            System.out.println(result);
         }
         catch(IOException e)
         {
