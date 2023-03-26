@@ -46,27 +46,27 @@ public class CarController
     @FXML
     private Button[] buttons = new Button[6];
 
-    public void switchToProfile(ActionEvent event) throws IOException //TWO WAY SOCKET WORKS
+    private Socket socket = null;
+    //write data to the server
+    private DataOutputStream out = null;
+    //pulls data from the server
+    private BufferedReader in = null;
+    private BufferedReader keys = null;
+
+    private Profile current = null;
+
+    private void initializeSockets()
     {
-        //socket (to communicate to server)
-        Socket socket = null;
-
-        //write data to the server
-        DataOutputStream out = null;
-        //pulls data from the server
-        BufferedReader in = null;
-        BufferedReader keys = null;
-
         try //try to make socket
         {
-           //new socket, IP/port of server is constant
-           socket = new Socket("172.25.174.86", 80);
+            //new socket, IP/port of server is constant
+            socket = new Socket("172.25.174.86", 80);
 
-           //sends data to server
-           out = new DataOutputStream(socket.getOutputStream());
-           //reads data from server
-           in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-           keys = new BufferedReader(new InputStreamReader(System.in));
+            //sends data to server
+            out = new DataOutputStream(socket.getOutputStream());
+            //reads data from server
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            keys = new BufferedReader(new InputStreamReader(System.in));
         }
         catch(UnknownHostException e)
         {
@@ -79,31 +79,9 @@ public class CarController
             System.exit(0);
         }
 
-        String user;
-        String password;
-        String result = "";
-        try
-        {
-            //user inputs to client
-            //line = keys.readLine();
-            //NEEDS TO READ FROM TEXTBOX
-            user = usernameLabel.getText();
-            password = passwordLabel.getText();
-
-            System.out.println("user and password obtained");
-            System.out.println(user+" "+password);
-
-            //the info is sent to the server
-            out.writeUTF(user+" "+password);
-            //get the result after the server processes
-            result = in.readLine();
-            System.out.println(result);
-        }
-        catch(IOException e)
-        {
-            System.out.println("fuck you bad line");
-            System.exit(0);
-        }
+    }
+    private void closeSockets()
+    {
         try
         {
             in.close();
@@ -115,22 +93,53 @@ public class CarController
             System.out.println("fuck you in closing");
             System.exit(0);
         }
+    }
 
+    //EVENTLISTENER METHOD
+    public void switchToProfile(ActionEvent event) throws IOException //TWO WAY SOCKET WORKS
+    {
+        initializeSockets();
+
+        String user = "";
+        String password = "";
+        String result = "";
+        try
+        {
+            //reads from textbox
+            user = usernameLabel.getText();
+            password = passwordLabel.getText();
+
+            System.out.println("user and password obtained");
+            System.out.println("login "+user+" "+password);
+
+            //the info is sent to the server
+            out.writeUTF("login "+user+" "+password);
+            //get the result after the server processes
+            result = in.readLine();
+            System.out.println(result);
+        }
+        catch(IOException e)
+        {
+            System.out.println("fuck you bad line");
+            System.exit(0);
+        }
 
         if(result.equals("success"))
         {
+            current = new Profile("", user, password);
             root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
+        closeSockets();
     }
     @FXML
     protected void loginClick()
     {
         //switchToProfile();
-        //loginLabel.setText("Yayy you logged in hah");
+        loginLabel.setText("Yayy you logged in hah");
         //switch to profile scene
     }
 
@@ -145,6 +154,13 @@ public class CarController
             "Item 1", "Item 2", "Item 3", "Item 4");
     ListView<String> lv = new ListView<>(list);
         lv.setCellFactory(param -> new XCell()); */
+
+
+    protected String getUsername()
+    {
+        return current.getUsername();
+    }
+    //EVENT LISTENER METHOD
     @FXML
     protected void switchToPool(ActionEvent event) throws IOException
     {
@@ -162,12 +178,11 @@ public class CarController
     {
         pools = FXCollections.observableArrayList(); // currently empty
 
-
         for (int i = 0; i < 5; i++)
-        {
             pools.add("No Pool");
-        }
-        //retrieve pools for the mmember
+
+
+        //retrieve pools for the member
         //"getAllPools username"
         //parse through
         //pools.set(i, parsed value)
@@ -209,6 +224,7 @@ public class CarController
         }
     }
 
+    //EVENTLISTENER METHOD
     public void switchToRide(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("ride-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -217,6 +233,7 @@ public class CarController
         stage.show();
     }
 
+    //EVENTLISTENER METHOD
     public void switchToRequest(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("request-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
