@@ -47,3 +47,13 @@
      </buttons>
    </ButtonBar>
 </VBox>
+
+<VBox>
+    <Button onAction="#switchToRide" text="" />
+    <Button onAction="#switchToRide" text="" />
+    <Button onAction="#switchToRide" text="" />
+    <Button onAction="#switchToRide" text="" />
+    <Button onAction="#switchToRide" text="" />
+    <Button onAction="#switchToRide" text="" />
+
+</VBox>

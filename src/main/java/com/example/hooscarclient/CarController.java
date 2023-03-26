@@ -98,7 +98,9 @@ public class CarController {
 
     }
 
-    public void switchToRides(ActionEvent event) throws IOException {
+    public void switchToRide(ActionEvent event) throws IOException {
+        //send button name to backend with request for info
+            //receive info, turn into ArrayList
         root = FXMLLoader.load(getClass().getResource("ride-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

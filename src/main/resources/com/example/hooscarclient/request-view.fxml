@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hooscarclient.CarController">
+   <children>
+      <TextField layoutX="196.0" layoutY="75.0" prefHeight="25.0" prefWidth="207.0" promptText="Enter Date (DD/MM/YY)" />
+      <TextField layoutX="196.0" layoutY="123.0" prefHeight="25.0" prefWidth="207.0" promptText="Enter Time (Military)" />
+      <TextField layoutX="196.0" layoutY="174.0" prefHeight="25.0" prefWidth="207.0" promptText="Enter Starting Location" />
+      <TextField layoutX="196.0" layoutY="222.0" prefHeight="25.0" prefWidth="207.0" promptText="Enter Destination" />
+      <TextField layoutX="196.0" layoutY="274.0" prefHeight="25.0" prefWidth="207.0" promptText="Enter Car Capacity (For Drivers)" />
+   </children>
+</AnchorPane>
