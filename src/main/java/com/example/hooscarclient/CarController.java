@@ -1,6 +1,5 @@
 package com.example.hooscarclient;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,9 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -28,7 +27,6 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.ResourceBundle;
 
-
 public class CarController
 {
     private Stage stage;
@@ -36,7 +34,8 @@ public class CarController
     private Parent root;
     @FXML
     private Label loginLabel;
-    private Label usernameLabel;
+    @FXML
+    private TextField usernameLabel;
     @FXML
     private PasswordField passwordLabel;
     @FXML
@@ -44,9 +43,10 @@ public class CarController
     @FXML
     private ObservableList<String> pools;
 
-
     public void switchToProfile(ActionEvent event) throws IOException
     {
+        System.out.println("preparing to connect socket");
+
         //socket (to communicate to server)
         Socket socket = null;
 
@@ -60,6 +60,7 @@ public class CarController
         {
            //new socket, IP/port of server is constant
            socket = new Socket("172.25.174.86", 80);
+           System.out.println("socket initialized");
 
            //sends data to server
            out = new DataOutputStream(socket.getOutputStream());
@@ -82,6 +83,7 @@ public class CarController
         String user;
         String password;
         String result = "";
+        System.out.println("preparing to get data from textfield");
         try
         {
             //user inputs to client
@@ -90,6 +92,7 @@ public class CarController
             user = usernameLabel.getText();
             password = passwordLabel.getText();
 
+            System.out.println("user and password obtained");
 
             //the info is sent to the server
             out.writeUTF(user+" "+password);

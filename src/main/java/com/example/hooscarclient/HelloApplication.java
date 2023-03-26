@@ -8,10 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class HelloApplication extends Application
+{
     @Override
-    public void start(Stage stage) throws IOException {
-        try {
+    public void start(Stage stage) throws IOException
+    {
+        try
+        {
             //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("homepage-view.fxml"));
             Parent root = FXMLLoader.load(HelloApplication.class.getResource("homepage-view.fxml"));
             Scene scene = new Scene(root, 450, 650);
@@ -20,7 +23,10 @@ public class HelloApplication extends Application {
             scene.getStylesheets().add(css);
             stage.setScene(scene);
             stage.show();
-        } catch(Exception e) {
+        }
+        catch(Exception e)
+        {
+            System.out.println("HelloApplication failure");
             e.printStackTrace();
         }
     }
