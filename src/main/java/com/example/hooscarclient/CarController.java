@@ -161,9 +161,13 @@ public class CarController
     }
 
 
-    public void switchToSignup()
-    {
+    public void switchToSignup(ActionEvent event) throws IOException {
         //switch to signup scene
+        root = FXMLLoader.load(getClass().getResource("signup-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
