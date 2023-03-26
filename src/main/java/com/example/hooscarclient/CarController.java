@@ -1,17 +1,24 @@
 package com.example.hooscarclient;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.EventObject;
+import java.util.ResourceBundle;
 
 public class CarController {
     private Stage stage;
@@ -20,9 +27,13 @@ public class CarController {
     @FXML
     private Label loginLabel;
     private Label usernameLabel;
+    @FXML
+    private ComboBox<String> comboBox;
+    @FXML
+    private ObservableList<String> pools;
 
     public void switchToProfile(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
+        root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -44,12 +55,46 @@ public class CarController {
     ListView<String> lv = new ListView<>(list);
         lv.setCellFactory(param -> new XCell()); */
     @FXML
-    protected void myPoolClick() {
+    protected void switchToPool(ActionEvent event) throws IOException {
         // when a pool is clicked, move to a different scene
         // retrieve from server
+        root = FXMLLoader.load(getClass().getResource("pool-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void joinPoolClick() {
-        //switch to signup scene
+    public void initializePoolList() {
+        pools = FXCollections.observableArrayList(); // currently empty
+
+        for (int i = 0; i < 5; i++) {
+            pools.add("No Pool");
+        }
+        //retrieve pools for the mmember
+            //"getAllPools username"
+        //parse through
+            //pools.set(i, parsed value)
+
+        /*comboBox = new ComboBox<>();
+        for(int i=0; i < 10; i++) {
+            pools.add(""+i);
+//            comboBox.getItems().add(""+i);
+        }
+        comboBox.setItems(pools);
+        System.out.println(comboBox.toString()); */
+        //fill pools using getAllPools
+    }
+    public void joinPool() {
+        //enter ID
+        //check if ID is valid (call to backend)
+            //"selectPool poolID"
+        // if valid add pool
+
+        //comboBox.getItems().add("yum pices"); //add the id
+    }
+
+    public void createPool() {
+
     }
 }
