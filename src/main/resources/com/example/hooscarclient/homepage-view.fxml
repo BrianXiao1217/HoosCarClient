@@ -13,8 +13,8 @@
     </padding>
 
     <Label fx:id="loginLabel" />
-    <TextField promptText="Username" />
-   <PasswordField promptText="Password" />
+    <TextField fx:id="usernameLabel" promptText="Username" />
+    <PasswordField fx:id="passwordLabel" promptText="Password" />
     <Button onAction="#switchToProfile" text="Log In" />
     <Button onAction="#signupClick" text="Sign Up" />
 </VBox>

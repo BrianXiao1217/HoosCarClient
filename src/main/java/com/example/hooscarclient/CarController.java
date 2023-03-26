@@ -1,6 +1,5 @@
 package com.example.hooscarclient;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,15 +13,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
-
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.ResourceBundle;
-
 
 public class CarController
 {
@@ -31,7 +35,10 @@ public class CarController
     private Parent root;
     @FXML
     private Label loginLabel;
-    private Label usernameLabel;
+    @FXML
+    private TextField usernameLabel;
+    @FXML
+    private PasswordField passwordLabel;
     @FXML
     private ComboBox<String> comboBox;
     @FXML
@@ -39,14 +46,89 @@ public class CarController
     @FXML
     private Button[] buttons = new Button[6];
 
-
     public void switchToProfile(ActionEvent event) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        System.out.println("preparing to connect socket");
+
+        //socket (to communicate to server)
+        Socket socket = null;
+
+        //write data to the server
+        DataOutputStream out = null;
+        //pulls data from the server
+        BufferedReader in = null;
+        BufferedReader keys = null;
+
+        try //try to make socket
+        {
+           //new socket, IP/port of server is constant
+           socket = new Socket("172.25.174.86", 80);
+           System.out.println("socket initialized");
+
+           //sends data to server
+           out = new DataOutputStream(socket.getOutputStream());
+           //reads data from server
+           in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+           keys = new BufferedReader(new InputStreamReader(System.in));
+        }
+        catch(UnknownHostException e)
+        {
+            System.out.println("nothing to connect to");
+            System.exit(0);
+        }
+        catch(IOException e)
+        {
+            System.out.println("fuck you");
+            System.exit(0);
+        }
+
+
+        String user;
+        String password;
+        String result = "";
+        System.out.println("preparing to get data from textfield");
+        try
+        {
+            //user inputs to client
+            //line = keys.readLine();
+            //NEEDS TO READ FROM TEXTBOX
+            user = usernameLabel.getText();
+            password = passwordLabel.getText();
+
+            System.out.println("user and password obtained");
+
+            //the info is sent to the server
+            out.writeUTF(user+" "+password);
+            //get the result after the server processes
+            result = in.readLine();
+            System.out.println(user+" "+password);
+        }
+        catch(IOException e)
+        {
+            System.out.println("fuck you bad line");
+            System.exit(0);
+        }
+        try
+        {
+            in.close();
+            out.close();
+            socket.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("fuck you in closing");
+            System.exit(0);
+        }
+
+
+        if(result.equals("success"))
+        {
+            root = FXMLLoader.load(getClass().getResource("profile-view.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
     @FXML
     protected void loginClick()
