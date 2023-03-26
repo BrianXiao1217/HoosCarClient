@@ -16,5 +16,5 @@
     <TextField fx:id="usernameLabel" promptText="Username" />
     <PasswordField fx:id="passwordLabel" promptText="Password" />
     <Button onAction="#switchToProfile" text="Log In" />
-    <Button onAction="#signupClick" text="Sign Up" />
+    <Button onAction="#switchToSignup" text="Sign Up" />
 </VBox>

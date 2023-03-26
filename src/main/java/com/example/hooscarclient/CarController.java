@@ -54,6 +54,30 @@ public class CarController
     private BufferedReader keys = null;
 
     private Profile current = null;
+    @FXML
+    private Label rideDriver;
+    @FXML
+    private Label rideDate; //still need to be able to retrieve date
+    @FXML
+    private Label rideTime;
+    @FXML
+    private Label rideStartLocation;
+    @FXML
+    private Label rideDestination;
+    @FXML
+    private Label ridePassengers;
+    @FXML
+    private TextField requestDriver;
+    @FXML
+    private TextField requestDate;
+    @FXML
+    private TextField requestTime;
+    @FXML
+    private TextField requestStartLocation;
+    @FXML
+    private TextField requestDestination;
+    @FXML
+    private TextField requestCarCap;
 
     private void initializeSockets()
     {
@@ -135,16 +159,9 @@ public class CarController
         }
         closeSockets();
     }
-    @FXML
-    protected void loginClick()
-    {
-        //switchToProfile();
-        loginLabel.setText("Yayy you logged in hah");
-        //switch to profile scene
-    }
 
 
-    public void signupClick()
+    public void switchToSignup()
     {
         //switch to signup scene
     }
@@ -171,6 +188,7 @@ public class CarController
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        initializeButtons();
     }
 
 
@@ -216,6 +234,8 @@ public class CarController
 
     public void initializeButtons() {
         // request date, time + destination from
+        // for each ride block (button), write the information we already know in them
+
         ArrayList<String> buttonText = new ArrayList<>();
         int i = 0;
         for (String s: buttonText) {
@@ -231,6 +251,14 @@ public class CarController
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        //set labels as requested by the server
+        rideDriver.setText(""); // info from server
+        rideDate.setText(""); // info from server
+        rideTime.setText(""); // info from server
+        rideStartLocation.setText(""); // info from server
+        rideDestination.setText(""); // info from server
+        ridePassengers.setText(""); // info from server
     }
 
     //EVENTLISTENER METHOD
@@ -240,6 +268,30 @@ public class CarController
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    protected void switchToPoolAfterRequest(ActionEvent event) throws IOException
+    {
+        // when a pool is clicked, move to a different scene
+        // retrieve from server
+        // save all the new inputs
+        //set labels as requested by the server
+
+        root = FXMLLoader.load(getClass().getResource("pool-view.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        initializeButtons();
+
+        requestDriver.getText(); // info to server
+        requestDate.getText();
+        requestTime.getText();
+        requestStartLocation.getText();
+        requestDestination.getText();
+        requestCarCap.getText();
     }
 
 }
