@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.hooscarclient.CarController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hooscarclient.CarController">
+    <padding>
+        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+    </padding>
 
-</AnchorPane>
+    <Label fx:id="loginLabel" />
+    <TextField fx:id="usernameLabel" promptText="Set Displayname" />
+   <TextField fx:id="usernameLabel1" promptText="Set Username" />
+    <PasswordField fx:id="passwordLabel" promptText="Set Password" />
+    <Button onAction="#switchToProfile" text="Sign Up" />
+</VBox>
