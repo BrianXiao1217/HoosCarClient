@@ -46,10 +46,8 @@ public class CarController
     @FXML
     private Button[] buttons = new Button[6];
 
-    public void switchToProfile(ActionEvent event) throws IOException
+    public void switchToProfile(ActionEvent event) throws IOException //TWO WAY SOCKET WORKS
     {
-        System.out.println("preparing to connect socket");
-
         //socket (to communicate to server)
         Socket socket = null;
 
@@ -63,7 +61,6 @@ public class CarController
         {
            //new socket, IP/port of server is constant
            socket = new Socket("172.25.174.86", 80);
-           System.out.println("socket initialized");
 
            //sends data to server
            out = new DataOutputStream(socket.getOutputStream());
@@ -82,11 +79,9 @@ public class CarController
             System.exit(0);
         }
 
-
         String user;
         String password;
         String result = "";
-        System.out.println("preparing to get data from textfield");
         try
         {
             //user inputs to client
@@ -96,6 +91,7 @@ public class CarController
             password = passwordLabel.getText();
 
             System.out.println("user and password obtained");
+            System.out.println(user+" "+password);
 
             //the info is sent to the server
             out.writeUTF(user+" "+password);
